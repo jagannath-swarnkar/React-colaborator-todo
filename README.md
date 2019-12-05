@@ -22,7 +22,7 @@ file uploading on aws s3.
 onece refresh your app again
 
 
-*To use file uploading process* <br/>
+### To use file uploading features
 to use file uploading features you need an AWS account and create a bucket on AWS S3 and follow the credentials <br/>
 
 for Aws access id and Aws security key, go to *my security console* and create a new access key. <br/>

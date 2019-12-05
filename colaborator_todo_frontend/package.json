@@ -1,0 +1,49 @@
+{
+  "name": "project_todo",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@material-ui/core": "^4.5.0",
+    "@material-ui/icons": "^4.4.3",
+    "aws-sdk": "^2.553.0",
+    "axios": "^0.19.0",
+    "fg-loadcss": "^2.1.0",
+    "form-data": "^2.5.1",
+    "material-ui-chip-input": "^2.0.0-beta.1",
+    "material-ui-dropzone": "^2.4.5",
+    "material-ui-image": "^3.2.1",
+    "multer": "^1.4.2",
+    "multer-s3": "^2.9.0",
+    "react": "^16.10.1",
+    "react-dom": "^16.10.1",
+    "react-google-login": "^5.0.5",
+    "react-redux": "^7.1.1",
+    "react-router-dom": "^5.1.2",
+    "react-scripts": "3.2.0",
+    "reactjs-localstorage": "0.0.7",
+    "redux": "^4.0.4",
+    "sweetalert": "^2.1.2",
+    "underscore": "^1.9.1"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+}

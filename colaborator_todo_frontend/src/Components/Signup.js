@@ -1,97 +1,110 @@
-import React from 'react';
-import axios from 'axios';
-import swal from 'sweetalert';
-import GoogleLogin from 'react-google-login';
+import React from "react";
+import axios from "axios";
+import swal from "sweetalert";
+import GoogleLogin from "react-google-login";
 
-import {Link} from 'react-router-dom';
-import Avatar from '@material-ui/core/Avatar';
-import Button from '@material-ui/core/Button';
-import CssBaseline from '@material-ui/core/CssBaseline';
-import TextField from '@material-ui/core/TextField';
-import Grid from '@material-ui/core/Grid';
-import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
-import Typography from '@material-ui/core/Typography';
-import { makeStyles } from '@material-ui/core/styles';
-import Container from '@material-ui/core/Container';
-
+import { Link } from "react-router-dom";
+import Avatar from "@material-ui/core/Avatar";
+import Button from "@material-ui/core/Button";
+import CssBaseline from "@material-ui/core/CssBaseline";
+import TextField from "@material-ui/core/TextField";
+import Grid from "@material-ui/core/Grid";
+import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
+import Typography from "@material-ui/core/Typography";
+import { makeStyles } from "@material-ui/core/styles";
+import Container from "@material-ui/core/Container";
 
 const useStyles = makeStyles(theme => ({
-  '@global': {
+  "@global": {
     body: {
-      backgroundColor: theme.palette.common.white,
-    },
+      backgroundColor: theme.palette.common.white
+    }
   },
   paper: {
     marginTop: theme.spacing(8),
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center"
   },
   avatar: {
     margin: theme.spacing(1),
-    backgroundColor: theme.palette.secondary.main,
+    backgroundColor: theme.palette.secondary.main
   },
   form: {
-    width: '100%', 
-    marginTop: theme.spacing(3),
+    width: "100%",
+    marginTop: theme.spacing(3)
   },
   submit: {
-    margin: theme.spacing(3, 0, 2),
+    margin: theme.spacing(3, 0, 2)
   },
   googleSignup: {
-    width:'auto',
-  },
+    width: "auto"
+  }
 }));
 
 export default function SignUp() {
   const classes = useStyles();
-  const [name, setName] = React.useState('');
-  const [lastName, setLastName] = React.useState('');
-  const [email, setEmail] = React.useState('');
-  const [password, setPassword] = React.useState('');
+  const [name, setName] = React.useState("");
+  const [lastName, setLastName] = React.useState("");
+  const [email, setEmail] = React.useState("");
+  const [password, setPassword] = React.useState("");
 
-  const googleLoginHandler = (email,name) =>{
+  const googleLoginHandler = (email, name) => {
     axios
-    .post('http://localhost:3030/signup',({'username':name,'email':email}))        
-    .then((result)=>{
-        if(result.data!=='err'){swal("Signup successful!", "Please signin !","success");
-        console.log('signup successfull!')
-          }
-        else{swal("Signup failed!", "User email already exists, Please signin !","error");
-          console.log('user exists!')
-          };
-    })
-    .catch((err)=>{console.log('err in posting signup data'.err)})
-  }
-  
-  const responseGoogle = (response) => {
-    var userDetail=(response.profileObj);
-    googleLoginHandler(userDetail.email,userDetail.name)
-  }
+      .post("http://localhost:3030/signup", { username: name, email: email })
+      .then(result => {
+        if (result.data !== "err") {
+          swal("Signup successful!", "Please signin !", "success");
+          console.log("signup successfull!");
+        } else {
+          swal(
+            "Signup failed!",
+            "User email already exists, Please signin !",
+            "error"
+          );
+          console.log("user exists!");
+        }
+      })
+      .catch(err => {
+        console.log("err in posting signup data".err);
+      });
+  };
 
-    const onSubmitHandler = (e) =>{
-      console.log('hello jagan',name,email,password)
-        e.preventDefault();
-        axios
-        .post('http://localhost:3030/signup',({'username':name+' '+lastName,'email':email,'password':password}))        
-        .then((result)=>{
-            if(result.data!=='err'){
-              swal("Signup successful!", "Please signin !","success");
-              console.log('signup successfull!')
-              }
-            else{
-              swal("Signup failed!", "User email already exists, Please signin !","error");
-              console.log('user exists!')
-              };
-            setName('')
-            setLastName('')
-            setEmail('')
-            setPassword('')
-        })
-        .catch((err)=>{console.log('err in posting signup data',err)})
-    }
+  const responseGoogle = response => {
+    var userDetail = response.profileObj;
+    googleLoginHandler(userDetail.email, userDetail.name);
+  };
 
-
+  const onSubmitHandler = e => {
+    console.log("hello jagan", name, email, password);
+    e.preventDefault();
+    axios
+      .post("http://localhost:3030/signup", {
+        username: name + " " + lastName,
+        email: email,
+        password: password
+      })
+      .then(result => {
+        if (result.data !== "err") {
+          swal("Signup successful!", "Please signin !", "success");
+          console.log("signup successfull!");
+        } else {
+          swal(
+            "Signup failed!",
+            "User email already exists, Please signin !",
+            "error"
+          );
+          console.log("user exists!");
+        }
+        setName("");
+        setLastName("");
+        setEmail("");
+        setPassword("");
+      })
+      .catch(err => {
+        console.log("err in posting signup data", err);
+      });
+  };
 
   return (
     <Container component="main" maxWidth="xs">
@@ -112,11 +125,11 @@ export default function SignUp() {
                 variant="outlined"
                 required
                 fullWidth
-                id="firstName"  
+                id="firstName"
                 label="First Name"
                 // autoFocus
                 value={name}
-                onChange={(e) => setName(e.target.value )}
+                onChange={e => setName(e.target.value)}
               />
             </Grid>
             <Grid item xs={12} sm={6}>
@@ -129,7 +142,7 @@ export default function SignUp() {
                 name="lastName"
                 autoComplete="lname"
                 value={lastName}
-                onChange={(e) => setLastName(e.target.value )}
+                onChange={e => setLastName(e.target.value)}
               />
             </Grid>
             <Grid item xs={12}>
@@ -142,7 +155,7 @@ export default function SignUp() {
                 name="email"
                 type="Email"
                 value={email}
-                onChange={(e) => setEmail(e.target.value )}
+                onChange={e => setEmail(e.target.value)}
               />
             </Grid>
             <Grid item xs={12}>
@@ -156,7 +169,7 @@ export default function SignUp() {
                 id="password"
                 autoComplete="current-password"
                 value={password}
-                onChange={(e) => setPassword(e.target.value )}
+                onChange={e => setPassword(e.target.value)}
               />
             </Grid>
           </Grid>
@@ -166,15 +179,13 @@ export default function SignUp() {
             variant="contained"
             color="primary"
             className={classes.submit}
-            
           >
             Sign Up
           </Button>
           <Grid container justify="flex-end">
             <Grid item>
-                {/* <routLink to='/login'> */}
-              <Link to="/login" 
-                style={{color:'blue'}}>
+              {/* <routLink to='/login'> */}
+              <Link to="/login" style={{ color: "blue" }}>
                 Already have an account? Sign in
               </Link>
               {/* </routLink> */}
@@ -183,14 +194,14 @@ export default function SignUp() {
         </form>
       </div>
       <GoogleLogin
-            clientId="725279638493-0sssfunerq4v2hsprul49fi23r82afed.apps.googleusercontent.com"
-            buttonText="Signup with Google"
-            fullWidth
-            className={classes.googleSignup}
-            onSuccess={responseGoogle}
-            onFailure={responseGoogle}
-            // cookiePolicy={'single_host_origin'}
-          />
+        clientId="725279638493-0sssfunerq4v2hsprul49fi23r82afed.apps.googleusercontent.com"
+        buttonText="Signup with Google"
+        fullWidth
+        className={classes.googleSignup}
+        onSuccess={responseGoogle}
+        onFailure={responseGoogle}
+        // cookiePolicy={'single_host_origin'}
+      />
     </Container>
   );
 }

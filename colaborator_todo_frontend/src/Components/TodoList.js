@@ -151,17 +151,17 @@ export default function TodoList(props) {
   };
 
   const listState = props.defaultList;
-  const final = itemList.filter(d=>{
-    if (d.done === 1){
+  const final = itemList.filter(d => {
+    if (d.done === 1) {
       d.done = true;
-    }else if (d.done === 0){
-      d.done = false
+    } else if (d.done === 0) {
+      d.done = false;
     }
-    return d
-  })
-  
+    return d;
+  });
+
   const todos = itemList.filter(dict => {
-    console.log("dict :",dict.done)
+    console.log("dict :", dict.done);
     if (listState === "Pending") {
       return !dict.done;
     } else if (listState === "Done") {
@@ -170,11 +170,11 @@ export default function TodoList(props) {
       return true;
     }
   });
-  
 
   return (
     <List className={classes.root}>
-      {todos.map((value, index) => {console.log(final)
+      {todos.map((value, index) => {
+        console.log(final);
         if (value.id === todoId) {
           return (
             <Card key={index} className={classes.card}>

@@ -99,7 +99,8 @@ export class Comments extends Component {
                 .filter(a => {
                   return a.comment_id === e.comment_id;
                 })
-                .map((p, q) => {console.log(p)
+                .map((p, q) => {
+                  console.log(p);
                   return (
                     <li style={{ listStyleType: "none" }} key={q}>
                       {p.sub_comment},{" "}

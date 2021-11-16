@@ -9,7 +9,7 @@
   "author": "jagan",
   "license": "ISC",
   "dependencies": {
-    "aws-sdk": "^2.553.0",
+    "aws-sdk": "^2.814.0",
     "cors": "^2.8.5",
     "d": "^1.0.1",
     "dotenv": "^8.2.0",
